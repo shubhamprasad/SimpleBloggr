@@ -1,0 +1,18 @@
+<h2> All Posts </h2>
+
+ <%=link_to 'New User', new_user_path %>
+
+<%=link_to 'New Post', new_user_post_path(current_user) %><br><br>
+
+<% @posts.each do |post| %>
+	Title: <%=post.title %><br>
+	Content:
+	<%= post.content %><br>
+	Author: <%=post.user.username if post.user  %><br>
+	Tags : 
+		<%post.tags.each do |t|%>
+			<%= link_to t.name, tag_path(t) %>,
+		<% end %><br><br>
+<% end %>
+
+<%=link_to 'Back', controller: 'bloggr'  %>
